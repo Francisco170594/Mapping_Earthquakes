@@ -48,23 +48,30 @@ let light = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles
 
 
  // Accessing the Toronto airline routes GeoJSON URL.
-let torontoData = "https://raw.githubusercontent.com/Francisco170594/Mapping_Earthquakes/main/torontoRoutes.json";
+let torontoData = 'https://raw.githubusercontent.com/Francisco170594/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json';
+
+// Create a style for the lines.
+let myStyle = {
+    color: "#ffffa1",
+    weight: 2
+}
 
 // Grabbing our GeoJSON data.
 d3.json(torontoData).then(function(data) {
     console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJson(data, {
+      style: myStyle,
       onEachFeature: function(feature,layer){
           console.log(layer)
-          layer.bindPopup("<h2> Airport code: " + feature.properties.faa + "</h2> <hr> <h3> Airport name: " + feature.properties.name);
+          layer.bindPopup("<h2> Airline: " + feature.properties.airline + "</h2> <hr> <h3> Destination: " + feature.properties.dst);
       }}).addTo(map);
 });
 
 // Create a base layer that holds both maps.
 let baseMaps = {
-    Light: light,
-    Dark: dark
+    Day_navigation : light,
+    Night_navigation: dark
   };
 
 // Create the map object with center, zoom level and default layer.
