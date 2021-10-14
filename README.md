@@ -9,3 +9,4 @@ On the map, the magintude and location of each earthquake will be shown in a pop
 Adding fault line on the map illustrate the relationship between the location and frequency of seismic activity and tectonic plates.
 
 ## Results
+<Img src = "Images/Challenge.png" width="650">
